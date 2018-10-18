@@ -11,10 +11,12 @@ Step 2: Install git:
 
 Step 3: Go into root mode:
 >sudu su
+
 (Enter root password here)
 
 Step 4: Checkout from git repository
 >git clone [REPO_URL]
+
 (Copy the URL of the repository from the green button above)
 
 Step 5:  Make script executable:
