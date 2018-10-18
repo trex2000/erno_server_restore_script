@@ -9,9 +9,12 @@ if [ ! -d "build" ]; then
   # Control will enter here if $DIRECTORY doesn't exist.
   mkdir build
 fi
+sh ./config.sh --enable all
+sh ./config.sh --enable CARDREADER_PCSC
 cd build
 cmake ..
-make
+#make 
+make USE_PCSC=1
 systemctl stop oscam 
 make install
 systemctl restart oscam

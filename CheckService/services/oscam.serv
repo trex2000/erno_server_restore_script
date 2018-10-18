@@ -1,0 +1,6 @@
+#!/bin/bash
+#restart oscam
+echo Killing oscam
+systemctl stop oscam
+sleep 5
+systemctl start oscam

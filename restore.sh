@@ -12,13 +12,19 @@ echo Restoring...
 read -p "Would you like to install Midnight Commander? <y/N> " prompt
 if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
 then
+    
+    sudo add-apt-repository universe
+    sudo apt-get update
     sudo apt-get install mc -y
 fi
+echo -e "\e[1;34mDone.\e[0m"
+
 read -p "Would you like to install locate? <y/N> " prompt
 if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
 then
     sudo apt-get install locate -y
 fi
+echo -e "\e[1;34mDone.\e[0m"
 
 echo -e "\e[31mRUN THIS ONLY ONE TIME!!!!"
 echo -e "\e[39m"
@@ -31,6 +37,7 @@ then
     echo Creating mount points
     sudo mount /var/log/ramdisk
 fi
+echo -e "\e[1;34mDone.\e[0m"
 
 read -p "Would you like to install crond? <y/N> " prompt
 if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
@@ -38,6 +45,8 @@ then
     sudo apt-get install cron -y
     
 fi
+echo -e "\e[1;34mDone.\e[0m"
+
 read -p "Would you like to install webserver+php+mysql? <y/N> " prompt
 if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
 then
@@ -53,6 +62,7 @@ then
     sudo apt-get install phpmyadmin -y
     sudo apt-get install -f -y
 fi
+echo -e "\e[1;34mDone.\e[0m"
 
 read -p "Would you like to install oscam? <y/N> " prompt
 if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
@@ -63,6 +73,7 @@ then
     sudo apt-get install cmake -y
     sudo apt-get install libssl-dev -y
     sudo apt-get install pcscd -y
+    sudo apt-get install libpcsclite-dev -y
     echo "Creating /var/etc/oscam folder"
     sudo mkdir /var/etc/
     sudo mkdir /var/etc/oscam
@@ -102,4 +113,45 @@ WantedBy=multi-user.target
 	crontab crontab.bak
 	rm crontab.bak
     fi
+    echo -e "\e[1;34mDone.\e[0m"
+
+    echo -e "Would you like to periodically check if Oscam is running?"
+    echo -e "\e[31mTo do this, first edit the connection details in the following file:"
+    echo -e "\e[31m./CheckService/services/oscam.check"
+    echo -e "\e[31mRUN THIS ONLY ONE TIME!!!!"
+    echo -e "\e[39m"
+    read -p "Would you like to add automatic check of oscam running state ? <y/N> " prompt
+    if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
+    then
+	apt-get install curl -y
+	mkdir /var/bin
+	cp -R ./CheckService/ /var/bin/
+	chmod 777 /var/bin/CheckService/*
+	#write out current crontab
+	crontab -l > crontab.bak
+	#echo new cron into cron file
+	echo "5 * * * *  root /var/bin/CheckService/checkService.sh" >> crontab.bak
+	#install new cron file
+	crontab crontab.bak
+	rm crontab.bak
+    fi
+    echo -e "\e[1;34mDone.\e[0m"
+
+    echo -e "\e[31mRUN THIS ONLY ONE TIME!!!!"
+    echo -e "\e[39m"
+    read -p "Would you like to add automatic update of oscam  ? <y/N> " prompt
+    if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
+    then
+	mkdir /var/bin
+	cp ./update_oscam.sh /var/bin/update_oscam.sh
+	chmod 777 /var/bin/update_oscam.sh
+	#write out current crontab
+	crontab -l > crontab.bak
+	#echo new cron into cron file
+	echo "30 2 * * 5  root /var/bin/update_oscam.sh" >> crontab.bak
+	#install new cron file
+	crontab crontab.bak
+	rm crontab.bak
+    fi
+    echo -e "\e[1;34mDone.\e[0m"
 fi
