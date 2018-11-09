@@ -15,7 +15,7 @@ Step 3: Go into root mode:
 (Enter root password here)
 
 Step 4: Checkout from git repository
->git clone [REPO_URL]
+>git clone https://github.com/trex2000/erno_server_restore_script.git
 
 (Copy the URL of the repository from the green button above)
 
