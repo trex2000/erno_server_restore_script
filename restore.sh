@@ -100,6 +100,10 @@ WantedBy=multi-user.target
     echo -e "\e[32mAll done. Copy oscam config files to /var/etc/oscam folder"
     echo -e "\e[39m"
 
+    mkdir /var/bin
+    cp ./update_oscam.sh /var/bin/update_oscam.sh
+    chmod 777 /var/bin/update_oscam.sh
+
     echo -e "\e[31mRUN THIS ONLY ONE TIME!!!!"
     echo -e "\e[39m"
     read -p "Would you like to add automatic restart of oscam? <y/N> " prompt
@@ -142,9 +146,6 @@ WantedBy=multi-user.target
     read -p "Would you like to add automatic update of oscam  ? <y/N> " prompt
     if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
     then
-	mkdir /var/bin
-	cp ./update_oscam.sh /var/bin/update_oscam.sh
-	chmod 777 /var/bin/update_oscam.sh
 	#write out current crontab
 	crontab -l > crontab.bak
 	#echo new cron into cron file
