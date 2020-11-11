@@ -15,17 +15,21 @@ Step 3: Go into root mode:
 (Enter root password here)
 
 Step 4: Checkout from git repository
+4.1 If it is a new installation:
 >git clone https://github.com/trex2000/erno_server_restore_script.git
 
 (Copy the URL of the repository from the green button above)
 
-Step 5: Change directory
 >cd ./erno_server_restore_script
 
-Step 6:  Make script executable:
+4.2 If it is an existing installation:
+>cd ./erno_server_restore_script
+>git fetch https://github.com/trex2000/erno_server_restore_script.git
+
+Step 5:  Make script executable:
 >chmod 777 *.sh
 
-Step 7: Launch restore script and follow onscreeen instructions:
+Step 6: Launch restore script and follow onscreeen instructions:
 >./restore.sh
 
 
