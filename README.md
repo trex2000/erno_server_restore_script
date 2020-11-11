@@ -25,6 +25,7 @@ Step 4: Checkout from git repository
 
 4.2 If it is an existing installation:
 >cd ./erno_server_restore_script
+
 >git fetch https://github.com/trex2000/erno_server_restore_script.git
 
 Step 5:  Make script executable:
