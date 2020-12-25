@@ -17,6 +17,8 @@ Step 3: Go into root mode:
 Step 4: Checkout from git repository
 
 4.1 If it is a new installation:
+>mkdir /var/bin
+>chmod 777 /var/bin
 >git clone https://github.com/trex2000/erno_server_restore_script.git
 
 (Copy the URL of the repository from the green button above)
@@ -24,7 +26,7 @@ Step 4: Checkout from git repository
 >cd ./erno_server_restore_script
 
 4.2 If it is an existing installation:
->cd ./erno_server_restore_script
+>cd /var/bin/erno_server_restore_script
 
 >git fetch https://github.com/trex2000/erno_server_restore_script.git
 
