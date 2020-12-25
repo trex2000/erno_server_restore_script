@@ -18,7 +18,9 @@ Step 4: Checkout from git repository
 
 4.1 If it is a new installation:
 >mkdir /var/bin
+
 >chmod 777 /var/bin
+
 >git clone https://github.com/trex2000/erno_server_restore_script.git
 
 (Copy the URL of the repository from the green button above)
