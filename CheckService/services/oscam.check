@@ -1,21 +1,21 @@
 #!/bin/sh
-#EDIT TO SUITE YOUR NEEDS
+#
+FILENAME="/tmp/_oscam_check"
 USER="username"
-PW="password"
+PW="passsword"
 IP="127.0.0.1"
 PORT="16000"
-# DO NOT EDIT BELOW THIS!
+STR="1843" #replace with caid
+READER_LABEL="My_reader" #replace with reader label
 
-FILENAME="/tmp/_oscam_check"
-STR="200 OK"
-#
+#DO NOT MODIFY BELOW
 echo "Trying to connect"
-curl --connect-timeout 5 --max-time 10 -s -v --silent  --digest -o  -u $USER:$PW "http://$USER:$PW@$IP:$PORT/oscamapi.html?part=status"  2>&1  | grep "$STR"  >  $FILENAME
+curl --connect-timeout 5 --max-time 10 -s -v --silent  --digest -o  -u $USER:$PW "http://$USER:$PW@$IP:$PORT/entitlements.html?label=$READER_LABEL&hideexpired=0"  2>&1  | grep  "$STR"  >  $FILENAME
 if [ -s $FILENAME ]; then
-echo "Oscam Running"
+echo "Oscam Running and card is fine"
 else
-logger -s  "Oscam not running. Trying to restart"
-./oscam.serv
+logger -s  "Oscam not running or card is not visible.  Trying to restart"
+/var/bin/ServiceCheck/services/oscam.serv
 fi
 rm -f $FILENAME
 exit 0
