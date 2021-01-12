@@ -33,7 +33,7 @@ then
       echo "No restart is needed, everything works"
 else
       logger -s "One of the cards were not ok, trying to restart OSCAM"
-     # /var/bin/ServiceCheck/services/oscam.serv
+      /var/bin/ServiceCheck/services/oscam.serv
 fi
 
 exit 0
