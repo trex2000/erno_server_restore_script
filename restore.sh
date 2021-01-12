@@ -120,7 +120,7 @@ WantedBy=multi-user.target
     echo -e "\e[1;34mDone.\e[0m"
 
     echo -e "Would you like to periodically check if Oscam is running?"
-    echo -e "\e[31mTo do this, first edit the connection details in the following file:"
+    echo -e "\e[31mTo do this, first edit the connection details in the following file, OTHERWISE THE SCRIPT WILL RESTART OSCAM EVERY 5 MINUTES!!:"
     echo -e "\e[31m./CheckService/services/oscam.check"
     echo -e "\e[31mRUN THIS ONLY ONE TIME!!!!"
     echo -e "\e[39m"
