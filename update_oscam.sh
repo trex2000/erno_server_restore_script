@@ -1,15 +1,17 @@
 #!/bin/sh 
 #configure area
-work_dir="/mnt/local/work"
+work_dir="/home/erno2/erno_server_restore_script"
 oscam_url="https://svn.streamboard.tv/oscam/trunk/"
 #oscam_backup_url="http://www.oscam.cc/svn/oscam-mirror/trunk"
-pcscd_url="https://salsa.debian.org/rousseau/"
-ccid_url="https://salsa.debian.org/rousseau/"
+#pcscd_url="https://salsa.debian.org/rousseau/"
+pcscd_url="https://github.com/LudovicRousseau"
+#ccid_url="https://salsa.debian.org/rousseau/"
+ccid_url="https://github.com/LudovicRousseau/"
 
 #script area
 DIRECTORY_CCID="${work_dir}/CCID"
 DIRECTORY_PCSC="${work_dir}/PCSC"
-DIRECTORY_OSCAM="${work_dir}/oscam-svn"
+DIRECTORY_OSCAM="${work_dir}/trunk"
 cd $work_dir
 
 echo "Started ccid update"
